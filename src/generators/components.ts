@@ -48,7 +48,6 @@ function writeFileErrorHandler(err) {
  * @param componentDir   组件文件夹
  */
 export function ComponentGenerator({
-  cssModule,
   pageComponentCssModule,
   component,
   appPath,
@@ -119,16 +118,8 @@ export function ComponentGenerator({
     )
     console.log(chalk.green('创建成功=>' + path.join(componentDir, `index.tsx`)))
     // index.${cssExt}
-    fs.writeFile(
-      path.join(componentDir, `index${getCssModuleExt(cssModule)}.${cssExt}`),
-      style(),
-      writeFileErrorHandler
-    )
-    console.log(
-      chalk.green(
-        '创建成功=>' + path.join(componentDir, `index${getCssModuleExt(cssModule)}.${cssExt}`)
-      )
-    )
+    fs.writeFile(path.join(componentDir, `style.ts`), style(), writeFileErrorHandler)
+    console.log(chalk.green('创建成功=>' + path.join(componentDir, `style.ts`)))
     console.log(chalk.green(`项目组件【${componentName}】创建成功`))
   }
 }
