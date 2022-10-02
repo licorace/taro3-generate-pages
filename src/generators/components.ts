@@ -3,7 +3,7 @@
  */
 import * as fs from 'fs'
 import * as path from 'path'
-import { firstUpperCase, getCssModuleExt } from '../utils'
+import { firstUpperCase } from '../utils'
 
 const tsx = ({ name }) => `import { FC, memo } from "react"
 import { Btn } from "./style"
@@ -47,13 +47,7 @@ function writeFileErrorHandler(err) {
  * @param component 组件名称 可能是  index/Banner  也可能是Banner
  * @param componentDir   组件文件夹
  */
-export function ComponentGenerator({
-  pageComponentCssModule,
-  component,
-  appPath,
-  chalk,
-  cssExt,
-}: any) {
+export function ComponentGenerator({ component, appPath, chalk }: any) {
   let pageName
   let componentName
   const componentInfos = component.split('/')
