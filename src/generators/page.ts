@@ -70,7 +70,7 @@ export function PageGenerator({ pagePath, appPath, chalk, nocss }: any) {
   //创建目录
   fs.mkdirSync(dir, { recursive: true })
   // index.tsx
-  fs.writeFile(path.join(dir, `${pageName}.tsx`), tsx({ name: pageName }), writeFileErrorHandler)
+  fs.writeFile(path.join(dir, `index.tsx`), tsx({ name: pageName }), writeFileErrorHandler)
   console.log(chalk.green('创建成功=>' + path.join(dir, `${pageName}.tsx`)))
   // index.less
   if (!nocss) {
@@ -78,7 +78,7 @@ export function PageGenerator({ pagePath, appPath, chalk, nocss }: any) {
     console.log(chalk.green('创建成功=>' + path.join(dir, `style.ts`)))
   }
   // 页面config
-  fs.writeFile(path.join(dir, `${pageName}.config.ts`), config(), writeFileErrorHandler)
+  fs.writeFile(path.join(dir, `index.config.ts`), config(), writeFileErrorHandler)
   console.log(chalk.green('创建成功=>' + path.join(dir, `${pageName}.config.ts`)))
 
   //返回页面名称
