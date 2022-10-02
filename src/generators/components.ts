@@ -5,37 +5,37 @@ import * as fs from 'fs'
 import * as path from 'path'
 import { firstUpperCase, getCssModuleExt } from '../utils'
 
-const tsx = ({ name }) => `import { FC, memo } from "react";'
-import { Btn } from "./style";
+const tsx = ({ name }) => `import { FC, memo } from "react"
+import { Btn } from "./style"
 
 type ${firstUpperCase(name)}Props = {
   styleConfig?: {
   };
   type?: "primary" | "normal" | "disabled";
   onClick?: () => void;
-};
+}
 
 const ${firstUpperCase(name)}: FC<${firstUpperCase(name)}Props> = memo((props) => {
-  const { children,type, styleConfig, onClick } = props;
+  const { children,type, styleConfig, onClick } = props
 
   return (
     <Btn typeName={type} {...styleConfig} onClick={onClick}>
       {children}
     </Btn>
-  );
-});
+  )
+})
 
-export default ${firstUpperCase(name)};
+export default ${firstUpperCase(name)}
 `
 
 const style = () =>
-  `import { styled } from "linaria/lib/react";
+  `import { styled } from "linaria/lib/react"
 
   type BtnProps = {
-  };
+  }
   
   export const Btn = styled()<BtnProps>
-  ;`
+  `
 
 function writeFileErrorHandler(err) {
   if (err) throw err
@@ -79,31 +79,16 @@ export function ComponentGenerator({
     const componentDir = path.join(appPath, 'src', 'pages', pageName, 'components')
     fs.mkdirSync(componentDir, { recursive: true })
     fs.writeFile(
-      path.join(componentDir, `${componentName}.tsx`),
+      path.join(componentDir, `index.tsx`),
       tsx({
         name: componentName,
       }),
       writeFileErrorHandler
     )
-    console.log(chalk.green('创建成功=>' + path.join(componentDir, `${componentName}.tsx`)))
+    console.log(chalk.green('创建成功=>' + path.join(componentDir, `index.tsx`)))
     // index.${cssExt}
-    fs.writeFile(
-      path.join(
-        componentDir,
-        `${componentName}${getCssModuleExt(pageComponentCssModule)}.${cssExt}`
-      ),
-      style(),
-      writeFileErrorHandler
-    )
-    console.log(
-      chalk.green(
-        '创建成功=>' +
-          path.join(
-            componentDir,
-            `${componentName}${getCssModuleExt(pageComponentCssModule)}.${cssExt}`
-          )
-      )
-    )
+    fs.writeFile(path.join(componentDir, `style.ts`), style(), writeFileErrorHandler)
+    console.log(chalk.green('创建成功=>' + path.join(componentDir, `style.ts`)))
 
     console.log(chalk.green(`页面组件【${pageName}/components/${componentName}】创建成功`))
   } else {

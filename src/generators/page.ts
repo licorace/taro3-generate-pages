@@ -10,8 +10,8 @@ import { firstUpperCase } from '../utils'
  * @param group 页面分组
  * @param name  页面名称
  */
-const tsx = ({ name }) => `import { memo, FC } from 'react'
-import { View,Text } from '@tarojs/components'
+const tsx = ({ name }) => `import { memo, FC } from "react"
+import { View,Text } from "@tarojs/components"
 
 const ${firstUpperCase(name)}: FC = memo(() => {
   return (
@@ -26,12 +26,12 @@ export default ${firstUpperCase(name)}
 
 // index.module.less
 const style = () =>
-  `import { styled } from "linaria/lib/react";
+  `import { styled } from "linaria/lib/react"
   
-  export const View = styled.view;`
+  export const View = styled.view`
 
 const config = () => `export default definePageConfig({
-  navigationBarTitleText: 'weChat'
+  navigationBarTitleText: "weChat"
 })
 `
 
@@ -71,7 +71,7 @@ export function PageGenerator({ pagePath, appPath, chalk, nocss }: any) {
   fs.mkdirSync(dir, { recursive: true })
   // index.tsx
   fs.writeFile(path.join(dir, `index.tsx`), tsx({ name: pageName }), writeFileErrorHandler)
-  console.log(chalk.green('创建成功=>' + path.join(dir, `${pageName}.tsx`)))
+  console.log(chalk.green('创建成功=>' + path.join(dir, `index.tsx`)))
   // index.less
   if (!nocss) {
     fs.writeFile(path.join(dir, `style.ts`), style(), writeFileErrorHandler)
@@ -79,7 +79,7 @@ export function PageGenerator({ pagePath, appPath, chalk, nocss }: any) {
   }
   // 页面config
   fs.writeFile(path.join(dir, `index.config.ts`), config(), writeFileErrorHandler)
-  console.log(chalk.green('创建成功=>' + path.join(dir, `${pageName}.config.ts`)))
+  console.log(chalk.green('创建成功=>' + path.join(dir, `index.config.ts`)))
 
   //返回页面名称
   return `pages/${pageGroup}/${pageName}`
