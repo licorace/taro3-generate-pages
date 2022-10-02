@@ -1,7 +1,7 @@
 {
-  "name": "tarojs-plugin-generator",
-  "version": "0.0.21",
-  "description": "Taro Generator 生成器",
+  "name": "taro3-generate-pages",
+  "version": "0.0.1",
+  "description": "Taro Generator 生成器,专为hooks和linaria定制化",
   "main": "index.js",
   "scripts": {
     "build": "npm run clean && npm run prod",
@@ -22,9 +22,9 @@
     "url": "git+https://github.com/liuhuapiaoyuan/tarojs-plugin-generator.git"
   },
   "keywords": [
-    "Taro"
+    "Taro,generate,pages,components"
   ],
-  "author": "luckyadam",
+  "author": "licorace",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/liuhuapiaoyuan/tarojs-plugin-generator/issues"
