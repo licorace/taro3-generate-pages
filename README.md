@@ -1,4 +1,4 @@
-# tarojs-plugin-generator
+# taro3-generate-pages
 
 > Taro 页面/组件创建工具，全部使用函数式组件+typescropt+hooks，提供良好的页面提示。
 
@@ -12,7 +12,7 @@
 在 Taro 项目根目录下安装
 
 ```bash
-$ npm i tarojs-plugin-generator --save
+$ npm i taro3-generate-pages --save
 ```
 
 ## 使用
@@ -29,7 +29,7 @@ const config = {
   plugins: [
     ...其余插件
 
-    'tarojs-plugin-generator'
+    'taro3-generate-pages'
   ]
   ...
 }
@@ -46,7 +46,7 @@ const config = {
   plugins: [
     ...其余插件
 
-    ['tarojs-plugin-generator',{
+    ['taro3-generate-pages',{
       css:'sass',  //可配置css编译器： 支持 none sass less stylus
       cssModules:'page',      //开启页面的CssModule化
     }]
