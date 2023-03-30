@@ -6,22 +6,22 @@ import * as path from 'path'
 import { firstUpperCase } from '../utils'
 
 const tsx = ({ name }) => `import { FC, memo } from "react"
-import { Btn } from "./style"
+import { View } from '@tarojs/components'
+import { Wrapper } from "./style"
 
 type ${firstUpperCase(name)}Props = {
-  styleConfig?: {
-  };
-  type?: "primary" | "normal" | "disabled";
   onClick?: () => void;
 }
 
-const ${firstUpperCase(name)}: FC<${firstUpperCase(name)}Props> = memo((props) => {
-  const { children,type, styleConfig, onClick } = props
+const ${firstUpperCase(name)}: FC<${firstUpperCase(name)}Props> = memo(() => {
+  
 
   return (
-    <Btn typeName={type} {...styleConfig} onClick={onClick}>
-      {children}
-    </Btn>
+    <Wrapper >
+      <View>
+        <View></View>
+      </View>
+    </Wrapper>
   )
 })
 
@@ -31,10 +31,11 @@ export default ${firstUpperCase(name)}
 const style = () =>
   `import { styled } from "linaria/lib/react"
 
-  type BtnProps = {
-  }
   
-  export const Btn = styled()<BtnProps>
+  
+  export const Wrapper = styled.view
+
+  
   `
 
 function writeFileErrorHandler(err) {
