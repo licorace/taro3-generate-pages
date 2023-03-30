@@ -31,11 +31,8 @@ export default ${firstUpperCase(name)}
 const style = () =>
   `import { styled } from "linaria/lib/react"
 
-  
-  
   export const Wrapper = styled.view
 
-  
   `
 
 function writeFileErrorHandler(err) {

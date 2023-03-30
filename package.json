@@ -1,6 +1,6 @@
 {
   "name": "taro3-generate-pages",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Taro Generator 生成器,专为hooks和linaria定制化",
   "main": "index.js",
   "scripts": {
