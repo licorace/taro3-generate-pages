@@ -70,7 +70,7 @@ export function ComponentGenerator({ component, appPath, chalk }: any) {
   componentName = firstUpperCase(componentName)
   //创建目录
   if (pageName) {
-    const componentDir = path.join(appPath, 'src', 'pages', pageName, 'components')
+    const componentDir = path.join(appPath, 'src', 'pages', pageName, 'components', componentName)
     fs.mkdirSync(componentDir, { recursive: true })
     fs.writeFile(
       path.join(componentDir, `index.tsx`),
@@ -90,11 +90,7 @@ export function ComponentGenerator({ component, appPath, chalk }: any) {
     const componentDir = path.join(appPath, 'src', 'components', componentName)
     fs.mkdirSync(componentDir, { recursive: true })
     // index.tsx
-    fs.writeFile(
-      path.join(componentDir, `index.tsx`),
-      tsx({ name: componentName }),
-      writeFileErrorHandler
-    )
+    fs.writeFile(path.join(componentDir, `index.tsx`), tsx({ name: componentName }), writeFileErrorHandler)
     console.log(chalk.green('创建成功=>' + path.join(componentDir, `index.tsx`)))
     // index.${cssExt}
     fs.writeFile(path.join(componentDir, `style.ts`), style(), writeFileErrorHandler)
