@@ -7,7 +7,7 @@ import { firstUpperCase } from '../utils'
 
 const tsx = ({ name }) => `import { FC, memo } from "react"
 import { View } from '@tarojs/components'
-import { Wrapper } from "./style"
+import { Wrapper } from './style'
 
 type ${firstUpperCase(name)}Props = {
   onClick?: () => void;
@@ -29,7 +29,7 @@ export default ${firstUpperCase(name)}
 `
 
 const style = () =>
-  `import { styled } from "linaria/lib/react"
+  `import { styled } from '@linaria/react'
 
   export const Wrapper = styled.view
 
