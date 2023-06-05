@@ -12,12 +12,14 @@ import { firstUpperCase } from '../utils'
  */
 const tsx = ({ name }) => `import { memo, FC } from "react"
 import { View,Text } from "@tarojs/components"
+import { Wrapper } from './style'
 
 const ${firstUpperCase(name)}: FC = memo(() => {
   return (
-    <View>
+    <Wrapper>
+    <View></View>
       <Text>${firstUpperCase(name)}</Text>
-    </View>
+    </Wrapper>
   )
 })
 
@@ -26,12 +28,17 @@ export default ${firstUpperCase(name)}
 
 // index.module.less
 const style = () =>
-  `import { styled } from "linaria/lib/react"
+  `import { styled } from '@linaria/react'
   
-  export const View = styled.view`
+  export const Wrapper = styled.view${`display:flex;`}`
 
 const config = () => `export default definePageConfig({
-  navigationBarTitleText: "weChat"
+  navigationStyle: 'default',
+  navigationBarTitleText: '',
+  backgroundTextStyle: 'dark',
+  navigationBarBackgroundColor: '#fff',
+  backgroundColor: '#ECECEC',
+  navigationBarTextStyle: 'black'
 })
 `
 
@@ -82,5 +89,5 @@ export function PageGenerator({ pagePath, appPath, chalk, nocss }: any) {
   console.log(chalk.green('创建成功=>' + path.join(dir, `index.config.ts`)))
 
   //返回页面名称
-  return `pages/${pageGroup}/${pageName}`
+  return `pages/${pageGroup}/index`
 }
